@@ -7,7 +7,7 @@ Original file is located at
     https://colab.research.google.com/drive/10D-CQIcnzEQHEJSsCYu6K3ZUWUf_JIIb
 """
 
-!pip install datasets
+# !pip install datasets
 
 from datasets import load_dataset
 from collections import defaultdict
