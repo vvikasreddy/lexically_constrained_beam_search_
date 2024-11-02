@@ -102,14 +102,6 @@ def get_count_dict_pairs(filtered_src, filtered_tgt, src_ngrams_count, tgt_ngram
     count += 1
 
   return dict_pairs
-# dict_pairs =  get_count_dict_pairs()
-
-# len(dict_pairs)
-# import gc
-
-# dict_pairs
-
-# cleaning the unnecessary details
 
 import math
 
