@@ -60,7 +60,8 @@ def constraints():
     #     dict_pairs[src_ngram, tgt_ngram] += min(src_ngrams_count[src_ngram], tgt_ngrams_count[tgt_ngram])
 
     if count %1000 == 0:
-      print(count)
+      # print(count)
+      pass
     count += 1
 
   return dict_pairs, src_ngrams_count, tgt_ngrams_count, total_src_words, total_tgt_words
@@ -96,7 +97,8 @@ def get_count_dict_pairs(filtered_src, filtered_tgt, src_ngrams_count, tgt_ngram
         dict_pairs[(src_ngram, tgt_ngram)] += min(src_ngrams_count[src_ngram], tgt_ngrams_count[tgt_ngram])
 
     if count %1000 == 0:
-      print(count)
+      # print(count)
+      pass
     count += 1
 
   return dict_pairs
@@ -164,10 +166,10 @@ def get_constraints():
 
   return max_pmi_dict
 
-pmi_scores = get_constraints()
+# pmi_scores = get_constraints()
 
-len(pmi_scores)
+# len(pmi_scores)
 
-max(pmi_scores.values())
+# max(pmi_scores.values())
 
-pmi_scores
+# pmi_scores
