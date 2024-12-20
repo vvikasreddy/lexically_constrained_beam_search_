@@ -10,8 +10,8 @@ The algorithm is applied to machine translation from Turkish (source language) t
 In text generation, always choosing the next word with highest probability might not produce optimal results. However, pursuing k best probabilities at each time step is a good idea to generate better translations. We can force content-relevant words (constraints) in the machine output using beam search to get contextually relevant translations. I am applying this algorithm to aid machine translation from Turkish(source language) to English(target language). The dataset utilized is WMT (Turkish-English), and the model employed is MarianMT.
 
 ![Image Description](images/Visual_explanation_of_algorithm.png)
-
-Fig 1:  visualization of the decoding process (reference: ![Hokamp and liu Paper](https://aclanthology.org/P17-1141.pdf))
+ 
+### Fig 1:  visualization of the decoding process (reference: ![Hokamp and liu Paper](https://aclanthology.org/P17-1141.pdf))
 
 The algorithm can be better explained using the above image, x axis contains the sequence length or time steps, y axis indicate the constraints covered so far. It can be viewed as a dynamic programming problem, which can be solved using a bottom-up approach. Meaning the values for the top nodes, can be filled by using the bottom nodes, each node holds k best values. The values for each node can be filled by generating new constraints (indicated by dashed lines) or continuing from model predictions (horizontal line). From the generated sequences, k best values are chosen to fill the current node. Hokamp and Liu also provide an algorithm to implement the model, which I am using as a reference.
 
@@ -22,7 +22,7 @@ Note: we only add a constraint to all the sequences going from (4,1) to (5,2), r
 
 ![example of generating next k beams. (k = 3](images/example_generating_next_k_beams.png)
 
-Fig 2:  visualization of the decoding process (reference: ![Hokamp and liu Paper](https://aclanthology.org/P17-1141.pdf))
+### Fig 2:  visualization of the decoding process (reference: ![Hokamp and liu Paper](https://aclanthology.org/P17-1141.pdf))
 
 ## Implementation:
 I have followed the algorithm presented in the paper by Hokamp and Liu. While it was time-consuming to implement, it was achievable.
