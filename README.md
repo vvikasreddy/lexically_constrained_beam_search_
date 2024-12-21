@@ -1,5 +1,4 @@
 # Lexically Constrained Beam Search
-Implementation of constrained beam search for Turkish-to-English machine translation using MarianMT and WMT datasets, based on Hokamp and Liu's algorithm.
 
 ## Overview
 This project explores the concept of lexically constrained beam search, based on the algorithm presented in Hokamp and Liu’s paper. The main goal is to improve the quality of machine translation by incorporating contextually relevant constraints, which guide the model’s translation process. This approach allows for more accurate translations by forcing content-relevant words into the output without changing model parameters.
