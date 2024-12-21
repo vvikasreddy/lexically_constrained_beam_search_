@@ -10,15 +10,13 @@ This project explores **lexically constrained beam search**, inspired by the alg
 ---
 
 ## 🧠 Algorithm  
-Beam search improves text generation by pursuing the top **k probabilities** instead of choosing the highest probability word at each step. This project incorporates **content-relevant constraints** to generate contextually relevant translations.  
+Beam search improves text generation by pursuing the top **k probabilities** instead of choosing the highest probability word at each step. The use of constraints helps generate contextually relevant translations from **content-relevant constraints**.
 
-### How It Works:  
-1. **Dynamic Programming**: Nodes represent sequence length (x-axis) and constraints covered (y-axis).  
-2. **Constraint Coverage**: Constraints can be generated (dashed lines) or model-predicted (horizontal lines).  
-3. **Beam Search**: At each node, the top-k beams are retained by evaluating all possible sequences.
-
-- **Beam Size (k)**: 4  
-- **Max Sequence Length**: 23  
+1. **Dynamic Programming Framework**: Sequence generation is represented on a grid where the x-axis corresponds to sequence length (time steps), and the y-axis represents constraints covered so far.
+2. **Constraint Handling**: Nodes can advance constraints by either generating new constraints (dashed lines) or using model predictions (horizontal lines).
+3. **Beam Search Optimization**: At each node, sequences are expanded, and the top-k beams are retained, ensuring efficient exploration of possibilities.
+4. **Beam Parameters**: A beam size (k) of 4 and a maximum sequence length of 23 are used to limit computational costs while maintaining quality.
+5. **Selection Strategy**: To determine the top-k beams for each node, sequences are ranked based on coverage and probability, adhering to the constraints efficiently.
 
 ---
 
@@ -42,17 +40,13 @@ To calculate top-k beams for a node `(5,2)`:
 
 ### 🔧 Steps:  
 1. **Constraint Extraction**:  
-   - Constraints are identified from the training data based on co-occurrence probabilities.  
-   - Normalized Pointwise Mutual Information (NPMI) > 0.9 is used to select high-relevance bigrams.  
+   - Constraints were extracted from bigrams in a corpus of 207,000 translation pairs, yielding 570 pairs with an NPMI score > 0.9; experimenting with lower thresholds increased quantity but reduced quality. Extracting constraints from ngrams of length 3–5 was deemed computationally expensive and likely insignificant in improving results.
+
+   - Hokamp and Liu's use of a post-editing corpus with a specific context, unlike common datasets like WMT, enabled them to extract more meaningful constraints, highlighting challenges in evaluation and metric improvement with limited constraints in a general dataset.
 
 2. **Beam Search Algorithm**:  
-   - Dynamic programming approach based on Hokamp and Liu’s algorithm.  
+   - The Beam search algorithm can be implemented using Dynamic programming approach (bottom-up) as presented in the Fig 1.  
    - Validated using ~1000 translations with constrained and unconstrained output.
-
-### 💡 Constraint Extraction Details:  
-- Extracted from **bigrams** in 207,000 translation pairs.  
-- Constraints: **570 pairs** with NPMI > 0.9.  
-- Lower NPMI thresholds yielded more constraints but reduced quality.  
 
 ---
 
